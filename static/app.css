@@ -1,0 +1,133 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    font-family: 'Tajawal', sans-serif;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 5rem auto;
+}
+
+/* NAV */
+nav {
+    height: 100%;
+    grid-column: 1/-1;
+    grid-row: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f6ffee;
+    padding: 0 .3rem;
+}
+
+nav button,
+.btn-acts button {
+    font-size: 1.2rem;
+    height: 2rem;
+    width: 5rem;
+}
+
+.brand {
+    color: #f48882;
+    font-size: 2rem;
+    margin-top: .5rem;
+}
+
+.brand:hover,
+.brand:active,
+.brand:link,
+.brand:focus {
+    color: #fad2cc;
+}
+
+.btn {
+    background: #f48882;
+    border: #f48882;
+    color: white;
+}
+
+.btn:hover,
+.btn:active,
+.btn:link,
+.btn:focus,
+.btn:visited {
+    background: white;
+    color: #f48882;
+    border: solid 1px #f48882;
+}
+
+/* MAIN */
+
+main {
+    height: 100%;
+    width: 100%;
+    grid-column: 4/10;
+    grid-row: 2;
+}
+
+.cupcake-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.cake {
+    width: 100%;
+    height: 20rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: .3rem 0;
+    border-radius: 1rem;
+    color: #f48882;
+    border: solid 1px #d3d3d35b;
+}
+
+.image {
+    height: 100%;
+    width: 50%;
+}
+
+.data {
+    height: 70%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    margin: 0 1rem;
+}
+
+.data p {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.btn-acts {
+    width: 100%;
+}
+
+#delete {
+    margin: 0 1rem;
+    background: #dd9bcf;
+}
+
+#edit {
+    background: #c6fad2;
+}
+
+.cake img {
+    height: 100%;
+    width: 100%;
+    border-radius: .8rem;
+    border: 2px solid white;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
