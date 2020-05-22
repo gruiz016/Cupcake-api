@@ -1,7 +1,7 @@
 $conatiner = $(".cupcake-container");
 $formConatiner = $(".form-container");
 
-const BASEURL = "http://127.0.0.1:5000/";
+const BASEURL = "https://cupcake-api.herokuapp.com";
 
 $formConatiner.hide()
 
@@ -197,7 +197,7 @@ $formConatiner.on('click', '#submit', async (evt) => {
       }
     })
   }
-  
+
   $formConatiner.hide()
   $formConatiner.empty()
   $conatiner.empty()
