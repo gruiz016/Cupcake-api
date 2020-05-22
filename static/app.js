@@ -1,7 +1,7 @@
 $conatiner = $(".cupcake-container");
 $formConatiner = $(".form-container");
 
-const BASEURL = "https://cupcake-api.herokuapp.com";
+const BASEURL = "https://cupcake-api.herokuapp.com/";
 
 $formConatiner.hide()
 
