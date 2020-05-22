@@ -1,6 +1,5 @@
 from flask import Flask, request, render_template, redirect, flash, session, jsonify
 import requests
-from secrets import SECRET_KEY
 from models.cupcake import db, connect_db, Cupcake
 import os
 
