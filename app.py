@@ -1,13 +1,13 @@
 from flask import Flask, request, render_template, redirect, flash, session, jsonify
 import requests
 from secrets import SECRET_KEY
-from models.cupcake import db, connect_db, Cupcake,
+from models.cupcake import db, connect_db, Cupcake
 import os
 
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql:///cupcake_db')
-app.config['SECRET_KEY'] = SECRET_KEY
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', SECRET_KEY)
 
 connect_db(app)
 
