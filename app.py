@@ -1,35 +1,38 @@
 from flask import Flask, request, render_template, redirect, flash, session, jsonify
 import requests
 from secrets import SECRET_KEY
-from models.cupcake import db, connect_db, Cupcake
+from models.cupcake import db, connect_db, Cupcake,
+import os
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///cupcake_db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_ECHO'] = True
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql:///cupcake_db')
 app.config['SECRET_KEY'] = SECRET_KEY
 
 connect_db(app)
 
 @app.route('/')
 def index():
+    '''Renders index.html'''
     return render_template('index.html')
 
 @app.route('/api/cupcakes')
 def get_all_cupcakes():
+    '''Gets all cupcakes in database.'''
     cupcakes = Cupcake.get_all()
     serailize = [cupcake.serailize() for cupcake in cupcakes]
     return jsonify(results=serailize)
 
 @app.route('/api/cupcakes/<int:id>')
 def get_cupcake_by_id(id):
+    '''Gets cupcake by id'''
     cupcake = Cupcake.get_by_id(id)
     serailize = cupcake.serailize()
     return jsonify(results=serailize)
 
 @app.route('/api/cupcakes', methods=['POST'])
 def create_cupcake():
+    '''Creates a new cupcake'''
     flavor = request.json['flavor']
     size = request.json['size']
     rating = request.json['rating']
@@ -45,6 +48,7 @@ def create_cupcake():
 
 @app.route('/api/cupcakes/<int:id>', methods=['PATCH'])
 def update_cupcake(id):
+    '''Edit cupcake'''
     cupcake = Cupcake.get_by_id(id)
     if cupcake == None:
         return (jsonify(message={'error': 'Id not found'}), 404)
@@ -59,6 +63,7 @@ def update_cupcake(id):
 
 @app.route('/api/cupcakes/<int:id>', methods=['DELETE'])
 def delete_cupcake(id):
+    '''Delete cupcake'''
     cupcake = Cupcake.get_by_id(id)
     if cupcake == None:
         return (jsonify(message={'error': 'Id not found'}), 404)
